@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?><Db flnm="diseño_mlm" nm="mlm" ver="1.3.4">
+  <VerLbl/>
+  <VerNotes/>
+  <DefTblOpts/>
+  <DocFolder>E:\mlm</DocFolder>
+  <Sch Cm="standard public schema" nm="public">
+    <Tbl UsSo="1" nm="comisiones">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id_comision" nm="pkcomisiones"/>
+      <Cl au="0" df="" nm="id_comision" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_transaccion" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="valor" nu="0">
+        <DT arr="0" ds="Money" en="" id="701" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_compra" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_comisiones_compra" prLkCl="id_compra" upAc="3">
+        <PrTb mn="0" nm="compra" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="comisiones" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_compra" prCl="id_compra"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="compra">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id_compra" nm="pkcompra"/>
+      <Cl au="0" df="" nm="id_compra" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_registro" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_usuario" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_paquete" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_compra_paquetes" prLkCl="id_paquete" upAc="3">
+        <PrTb mn="0" nm="paquetes" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="compra" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_paquete" prCl="id_paquete"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_compra_usuarios" prLkCl="id_usuario" upAc="3">
+        <PrTb mn="0" nm="usuarios" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="compra" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_usuario" prCl="id_usuario"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="nivel">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id_upline, nivel, usuarios_id_usuario" nm="pknivel"/>
+      <Cl au="0" df="" nm="id_upline" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>id_usuario del upline</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="nivel" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>nivel del upline</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="usuarios_id_usuario" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_nivel_usuarios" prLkCl="id_usuario" upAc="3">
+        <PrTb mn="0" nm="usuarios" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="nivel" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="usuarios_id_usuario" prCl="id_usuario"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="paquetes">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id_paquete" nm="pkpaquetes"/>
+      <Cl au="0" df="" nm="id_paquete" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="costo" nu="1">
+        <DT arr="0" ds="Money" en="" id="701" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="usuarios">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id_usuario" nm="pkusuarios"/>
+      <Cl au="0" df="" nm="id_usuario" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_patrocinador" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="estado" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="apellidos" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="direccion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="telefono" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="llave_publica" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="34" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_usuarios_usuarios" prLkCl="id_usuario" upAc="3">
+        <PrTb mn="0" nm="usuarios" oe="1" sch="public" zr="1"/>
+        <CdTb mn="1" nm="usuarios" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="id_patrocinador" prCl="id_usuario"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="usuarios_id_patrocinador_Idx" spa="0" unq="1">
+        <ClNs>id_usuario</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <CustomTypes/>
+  </Sch>
+  <Dgm nm="diagramA">
+    <RnCf ClkAct="true" FtSz="11" lkStgy="RightAngleStrategy" zm="1.0">
+      <VbCfg>
+        <Fg ky="Auto Number" vl="0"/>
+        <Fg ky="Check" vl="0"/>
+        <Fg ky="Comment" vl="0"/>
+        <Fg ky="Data Type" vl="1"/>
+        <Fg ky="Default" vl="0"/>
+        <Fg ky="ENUM Values" vl="0"/>
+        <Fg ky="Length" vl="1"/>
+        <Fg ky="Name" vl="1"/>
+        <Fg ky="Nullable" vl="0"/>
+        <Fg ky="Schema Name" vl="0"/>
+        <Fg ky="Signed" vl="0"/>
+      </VbCfg>
+    </RnCf>
+    <DiaProps>
+      <Show AllCols="1" FkCols="1" FkNms="1" PkCols="1"/>
+      <ErNotation>BarkerErNotation</ErNotation>
+      <DbTableRectangleFill>HeaderFooterFill</DbTableRectangleFill>
+      <svg path=""/>
+    </DiaProps>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="usuarios" x="119" y="147"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="compra" x="218" y="348"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="paquetes" x="595" y="364"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="nivel" x="527" y="146"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="comisiones" x="194" y="511"/>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="public.comisiones.fk_comisiones_compra" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="275" x2="275" y1="427" y2="511"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="EAST" nm="public.compra.fk_compra_paquetes" parentEdge="WEST" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="595" x2="446" y1="391" y2="391"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="public.compra.fk_compra_usuarios" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="324" x2="324" y1="278" y2="348"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="WEST" nm="public.nivel.fk_nivel_usuarios" parentEdge="EAST" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="368" x2="527" y1="208" y2="208"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="SOUTH" nm="public.usuarios.fk_usuarios_usuarios" parentEdge="NORTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines/>
+    </FkGl>
+    <Notes/>
+    <Zones/>
+  </Dgm>
+  <RnmMgr NxRnmId="15">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="usuarios" SupCls="Schema" SupNme="public">
+      <Rnm id="1" nNm="nombre" oNm="usuariosName"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="usuarios" SupCls="Schema" SupNme="public">
+      <Rnm id="3" nNm="id_usuario" oNm="Id_usuario"/>
+      <Rnm id="2" nNm="Id_usuario" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="compra" SupCls="Schema" SupNme="public">
+      <Rnm id="4" nNm="id_compra" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="compra" SupCls="Schema" SupNme="public">
+      <Rnm id="5" nNm="fecha_registro" oNm="InsertTime"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="paquetes" SupCls="Schema" SupNme="public">
+      <Rnm id="6" nNm="id_paquete" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="nivel" SupCls="Schema" SupNme="public">
+      <Rnm id="9" nNm="id_usuario" oNm="id_nivel"/>
+      <Rnm id="7" nNm="id_nivel" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="nivel" SupCls="Schema" SupNme="public">
+      <Rnm id="8" nNm="id_upline" oNm="nivelName"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="comisiones" SupCls="Schema" SupNme="public">
+      <Rnm id="10" nNm="id_comision" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="comisiones" SupCls="Schema" SupNme="public">
+      <Rnm id="11" nNm="valor" oNm="InsertTime"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="comisiones" SupCls="Schema" SupNme="public">
+      <Rnm id="12" nNm="id_transaccion" oNm="comisionesName"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="usuarios" SupCls="Schema" SupNme="public">
+      <Rnm id="14" nNm="id_patrocinador" oNm="id_patrocin"/>
+      <Rnm id="13" nNm="id_patrocin" oNm="usuarios_id_usuario"/>
+    </RnmCh>
+  </RnmMgr>
+  <DbDocOptionMgr>
+    <BasicOptionMgr>
+      <Name>db.doc.option.mgr</Name>
+      <BoolOpt lbl="Diagrams" nm="doc.diagrams" on="1" spl="0"/>
+      <BoolOpt lbl="Foreign Keys" nm="doc.fks" on="1" spl="0"/>
+      <BoolOpt lbl="Indexes" nm="doc.indexes" on="1" spl="0"/>
+      <BoolOpt lbl="Overwrite CSS File" nm="doc.overwrite.css" on="1" spl="0"/>
+      <BoolOpt lbl="Procedures" nm="doc.procs" on="1" spl="0"/>
+      <BoolOpt lbl="Schemas" nm="doc.schemas" on="1" spl="0"/>
+      <BoolOpt lbl="Sequences" nm="doc.sequences" on="1" spl="0"/>
+      <BoolOpt lbl="Tables" nm="doc.tables" on="1" spl="0"/>
+      <BoolOpt lbl="Triggers" nm="doc.triggers" on="1" spl="0"/>
+      <BoolOpt lbl="Views" nm="doc.views" on="1" spl="0"/>
+    </BasicOptionMgr>
+  </DbDocOptionMgr>
+  <OpenEditors>
+    <OpenEditor ClsNm="Diagram" fqn="null.diagramA" selected="1"/>
+  </OpenEditors>
+  <TreePaths>
+    <TreePath/>
+    <TreePath>/Schemas (1)</TreePath>
+    <TreePath>/Schemas (1)/public</TreePath>
+    <TreePath>/Schemas (1)/public/Tables (5)</TreePath>
+    <TreePath>/Diagrams (1)</TreePath>
+  </TreePaths>
+  <SqlTexts/>
+</Db>
