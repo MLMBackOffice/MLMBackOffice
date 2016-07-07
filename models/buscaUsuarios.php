@@ -18,7 +18,7 @@ class buscaUsuarios extends Usuarios
     public function rules()
     {
         return [
-            [['id_usuario', 'id_patrocinador', 'estado'], 'integer'],
+            [['id_usuario', 'id_patrocinador', 'estado', 'id_sexo'], 'integer'],
             [['nombre', 'apellidos', 'direccion', 'telefono', 'llave_publica'], 'safe'],
         ];
     }
@@ -62,6 +62,7 @@ class buscaUsuarios extends Usuarios
             'id_usuario' => $this->id_usuario,
             'id_patrocinador' => $this->id_patrocinador,
             'estado' => $this->estado,
+            'id_sexo' => $this->id_sexo,
         ]);
 
         $query->andFilterWhere(['like', 'nombre', $this->nombre])

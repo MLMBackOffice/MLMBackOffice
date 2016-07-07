@@ -36,6 +36,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'direccion',
             'telefono',
             'llave_publica',
+             [
+                'attribute'=>'id_sexo',
+                'value'=>  \app\models\Sexo::findOne($model->id_sexo)->nombre
+                        ] ,
         ],
     ]) ?>
 

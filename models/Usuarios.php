@@ -4,6 +4,8 @@ namespace app\models;
 
 use Yii;
 
+use yii\helpers\ArrayHelper;
+use app\models\Sexo;
 /**
  * This is the model class for table "usuarios".
  *
@@ -15,9 +17,11 @@ use Yii;
  * @property string $direccion
  * @property string $telefono
  * @property string $llave_publica
+ * @property integer $id_sexo
  *
  * @property Compra[] $compras
  * @property Nivel[] $nivels
+ * @property Sexo $idSexo
  * @property Usuarios $idPatrocinador
  * @property Usuarios[] $usuarios
  */
@@ -38,11 +42,12 @@ class Usuarios extends \yii\db\ActiveRecord
     {
         return [
             [['id_usuario', 'nombre', 'estado', 'llave_publica'], 'required'],
-            [['id_usuario', 'id_patrocinador', 'estado'], 'integer'],
+            [['id_usuario', 'id_patrocinador', 'estado', 'id_sexo'], 'integer'],
             [['nombre', 'direccion', 'telefono'], 'string', 'max' => 50],
             [['apellidos'], 'string', 'max' => 100],
             [['llave_publica'], 'string', 'max' => 34],
             [['id_usuario'], 'unique'],
+            [['id_sexo'], 'exist', 'skipOnError' => true, 'targetClass' => Sexo::className(), 'targetAttribute' => ['id_sexo' => 'id_sexo']],
             [['id_patrocinador'], 'exist', 'skipOnError' => true, 'targetClass' => Usuarios::className(), 'targetAttribute' => ['id_patrocinador' => 'id_usuario']],
         ];
     }
@@ -53,7 +58,7 @@ class Usuarios extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_usuario' => 'Id Usuario',
+            'id_usuario' => 'id usuario llave primaria',
             'nombre' => 'Nombre',
             'id_patrocinador' => 'Id Patrocinador',
             'estado' => 'Estado',
@@ -61,9 +66,18 @@ class Usuarios extends \yii\db\ActiveRecord
             'direccion' => 'Direccion',
             'telefono' => 'Telefono',
             'llave_publica' => 'Llave Publica',
+            'id_sexo' => 'Id Sexo',
         ];
     }
 
+    /**
+     * 
+     */
+    public function getListaSexo() {
+        $opciones=  Sexo::find()->asArray()->all();
+        return ArrayHelper::map($opciones, 'id_sexo', 'nombre');
+        
+    }
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -83,6 +97,14 @@ class Usuarios extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
+    public function getIdSexo()
+    {
+        return $this->hasOne(Sexo::className(), ['id_sexo' => 'id_sexo']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getIdPatrocinador()
     {
         return $this->hasOne(Usuarios::className(), ['id_usuario' => 'id_patrocinador']);
@@ -94,14 +116,5 @@ class Usuarios extends \yii\db\ActiveRecord
     public function getUsuarios()
     {
         return $this->hasMany(Usuarios::className(), ['id_patrocinador' => 'id_usuario']);
-    }
-
-    /**
-     * @inheritdoc
-     * @return UsuariosQuery the active query used by this AR class.
-     */
-    public static function find()
-    {
-        return new UsuariosQuery(get_called_class());
     }
 }

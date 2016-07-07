@@ -32,6 +32,14 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'direccion',
             // 'telefono',
             // 'llave_publica',
+            [
+                'attribute'=>'id_sexo',
+                'value'=> function ($model) {
+                        $sexo=  \app\models\Sexo::findOne($model->id_sexo);
+                        return $sexo->nombre;
+                },
+                'filter'=> \yii\helpers\ArrayHelper::map(\app\models\Sexo::find()->all(), 'id_sexo', 'nombre'),
+            ] ,
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
