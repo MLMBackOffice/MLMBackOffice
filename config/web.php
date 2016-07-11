@@ -5,7 +5,12 @@ $params = require(__DIR__ . '/params.php');
 $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => ['log',
+        function () {
+            return Yii::$app->getModule("user");
+        },
+    // to set up /user routes
+    ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -15,8 +20,8 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'class' => 'amnah\yii2\user\components\User',
-        ],
+          'class' => 'amnah\yii2\user\components\User',
+          ], 
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
             'useFileTransport' => true,
@@ -24,6 +29,18 @@ $config = [
                 'from' => ['admin@website.com' => 'Admin'], // this is needed for sending emails
                 'charset' => 'UTF-8',
             ]
+        ],
+        'urlManager' => [
+            'class' => 'yii\web\UrlManager',
+            // Disable index.php
+            'showScriptName' => false,
+            // Disable r= routes
+            'enablePrettyUrl' => true,
+            'rules' => array(
+                '<controller:\w+>/<id:\d+>' => '<controller>/view',
+                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+            ),
         ],
     ],
     'modules' => [
@@ -41,7 +58,8 @@ $config = [
           // for the mailer to send real emails.
           'useFileTransport' => true,
           ],
-         */ 'log' => [
+         */ 
+        'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
                 [

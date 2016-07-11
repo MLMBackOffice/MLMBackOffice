@@ -21,11 +21,16 @@ class ComposerStaticInit701da14fc33d1e12acd6d38488668347
             'yii\\composer\\' => 13,
             'yii\\codeception\\' => 16,
             'yii\\bootstrap\\' => 14,
+            'yii\\authclient\\' => 15,
             'yii\\' => 4,
         ),
         'c' => 
         array (
             'cebe\\markdown\\' => 14,
+        ),
+        'a' => 
+        array (
+            'amnah\\yii2\\user\\' => 16,
         ),
         'F' => 
         array (
@@ -62,6 +67,10 @@ class ComposerStaticInit701da14fc33d1e12acd6d38488668347
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2-bootstrap',
         ),
+        'yii\\authclient\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yiisoft/yii2-authclient',
+        ),
         'yii\\' => 
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2',
@@ -69,6 +78,10 @@ class ComposerStaticInit701da14fc33d1e12acd6d38488668347
         'cebe\\markdown\\' => 
         array (
             0 => __DIR__ . '/..' . '/cebe/markdown',
+        ),
+        'amnah\\yii2\\user\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/amnah/yii2-user',
         ),
         'Faker\\' => 
         array (
