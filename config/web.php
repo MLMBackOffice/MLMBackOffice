@@ -20,13 +20,21 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-          'class' => 'amnah\yii2\user\components\User',
-          ], 
+            'class' => 'amnah\yii2\user\components\User',
+        ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
-            'useFileTransport' => true,
+            'useFileTransport' => false,
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'host' => 'smtp.gmail.com',
+                'username' => 'ivanssalazar14@gmail.com',
+                'password' => 'ivansalazar14',
+                'port' => '465',
+                'encryption' => 'ssl',
+            ],
             'messageConfig' => [
-                'from' => ['admin@website.com' => 'Admin'], // this is needed for sending emails
+                'from' => ['ivanssalazar14@gmail.com' => 'ivansalazar'], // this is needed for sending emails
                 'charset' => 'UTF-8',
             ]
         ],
@@ -42,6 +50,7 @@ $config = [
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
             ),
         ],
+        'db' => require(__DIR__ . '/db.php')
     ],
     'modules' => [
         'user' => [
@@ -58,7 +67,7 @@ $config = [
           // for the mailer to send real emails.
           'useFileTransport' => true,
           ],
-         */ 
+         */
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
@@ -68,7 +77,6 @@ $config = [
                 ],
             ],
         ],
-        'db' => require(__DIR__ . '/db.php'),
     /*
       'urlManager' => [
       'enablePrettyUrl' => true,
