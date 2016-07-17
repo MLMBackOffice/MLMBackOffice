@@ -20,6 +20,7 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <link rel="shortcut icon" href='<?php echo Yii::$app->request->baseUrl; ?>/favicon.ico' type="image/x-icon" />
 </head>
 <body>
 <?php $this->beginBody() ?>
@@ -27,7 +28,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'My Company',
+        'brandLabel' => 'Wei Fast Pay',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -36,15 +37,17 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-               ['label' => 'User', 'url' => ['/user']],
+            ['label' => 'Inicio', 'url' => ['/site/index']],
+            //['label' => 'Nosotros', 'url' => ['/site/about']],
+            //['label' => 'User', 'url' => ['/user']],
+            ['label' => 'Regístrese!', 'url' => ['/user/register']],
     Yii::$app->user->isGuest ?
-        ['label' => 'Login', 'url' => ['/user/login']] : // or ['/user/login-email']
-        ['label' => 'Logout (' . Yii::$app->user->displayName . ')',
+        ['label' => 'Ingreso a la cuenta', 'url' => ['/user/login']] : // or ['/user/login-email']
+        ['label' => 'Salir (' . Yii::$app->user->displayName . ')',
             'url' => ['/user/logout'],
             'linkOptions' => ['data-method' => 'post']],
+
+        ['label' => 'Contacto', 'url' => ['/site/contact']],
 ],
     ]);
     NavBar::end();
@@ -60,9 +63,9 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="pull-left">&copy; Wei Fast Pay <?= date('Y') ?></p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <!--<p class="pull-right"><?= Yii::powered() ?></p>-->
     </div>
 </footer>
 

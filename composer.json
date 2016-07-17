@@ -19,7 +19,11 @@
          "amnah/yii2-user": "*@dev",
         "yiisoft/yii2": ">=2.0.5",
         "yiisoft/yii2-bootstrap": "*",
-        "yiisoft/yii2-swiftmailer": "*"
+        "yiisoft/yii2-swiftmailer": "*",
+        "yiisoft/yii2-imagine": "~2.0.0",
+        "macgyer/yii2-materializecss": "*",
+        "mervick/yii2-material-design-icons": "~1.0",
+        "rmrevin/yii2-fontawesome": "~2.15"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

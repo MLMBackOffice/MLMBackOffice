@@ -15,6 +15,8 @@ class ComposerStaticInit701da14fc33d1e12acd6d38488668347
         'y' => 
         array (
             'yii\\swiftmailer\\' => 16,
+            'yii\\materialicons\\' => 18,
+            'yii\\imagine\\' => 12,
             'yii\\gii\\' => 8,
             'yii\\faker\\' => 10,
             'yii\\debug\\' => 10,
@@ -23,6 +25,14 @@ class ComposerStaticInit701da14fc33d1e12acd6d38488668347
             'yii\\bootstrap\\' => 14,
             'yii\\authclient\\' => 15,
             'yii\\' => 4,
+        ),
+        'r' => 
+        array (
+            'rmrevin\\yii\\fontawesome\\' => 24,
+        ),
+        'm' => 
+        array (
+            'macgyer\\yii2materializecss\\' => 27,
         ),
         'c' => 
         array (
@@ -42,6 +52,14 @@ class ComposerStaticInit701da14fc33d1e12acd6d38488668347
         'yii\\swiftmailer\\' => 
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2-swiftmailer',
+        ),
+        'yii\\materialicons\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mervick/yii2-material-design-icons',
+        ),
+        'yii\\imagine\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yiisoft/yii2-imagine',
         ),
         'yii\\gii\\' => 
         array (
@@ -75,6 +93,14 @@ class ComposerStaticInit701da14fc33d1e12acd6d38488668347
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2',
         ),
+        'rmrevin\\yii\\fontawesome\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rmrevin/yii2-fontawesome',
+        ),
+        'macgyer\\yii2materializecss\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/macgyer/yii2-materializecss/src',
+        ),
         'cebe\\markdown\\' => 
         array (
             0 => __DIR__ . '/..' . '/cebe/markdown',
@@ -90,6 +116,13 @@ class ComposerStaticInit701da14fc33d1e12acd6d38488668347
     );
 
     public static $prefixesPsr0 = array (
+        'I' => 
+        array (
+            'Imagine' => 
+            array (
+                0 => __DIR__ . '/..' . '/imagine/imagine/lib',
+            ),
+        ),
         'H' => 
         array (
             'HTMLPurifier' => 

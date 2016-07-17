@@ -1,5 +1,6 @@
 html,
 body {
+    font-size: 14px;
     height: 100%;
 }
 
@@ -88,4 +89,91 @@ a.desc:after {
     border-left: 3px solid #eed3d7;
     padding: 10px 20px;
     margin: 0 0 15px 0;
+}
+
+.video-fondo{
+    width: 100%;
+    position: fixed;
+    z-index: -1;
+}
+
+.perfil{
+    display: inline-block;
+}
+
+.texto-perfil{
+    color: white;
+    display: inline-block;
+
+}
+
+.imagen-perfil{ 
+    display: inline-block;
+}
+.contenido{
+    border: 5px solid black;
+}
+
+.redes{
+    display: inline-block;  
+    background-color: white;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+.videos{
+    display: inline-block;
+    background-color: white;
+}
+
+.botones-sociales{
+
+    padding-right: 10px;
+    padding-bottom: 10px;
+    
+}
+
+.subtitulo{
+}
+
+.video{
+    display: inline-block;
+    width: 40%; 
+    margin: 20px;
+}
+
+.btn-fb{
+    background-color: #4d76bd !important;
+}
+
+.btn-tw{
+    background-color: #70c5fc !important;
+}
+
+.btn-gplus{
+    background-color: #db5447 !important;
+}
+
+.btn-li{
+    background-color: #4c84c5 !important;
+}
+
+.btn-yt{
+    background-color: #da3b35 !important;
+}
+
+footer.page-footer {
+    background-color: #32b496 !important;
+    margin-top: 0 !important; 
+    padding-top: 0 !important;
+
+}
+
+.modal{
+    width: 100% !important;
+    background-color: transparent !important;
+    max-height: 100% !important;
+
+
+
 }

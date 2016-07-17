@@ -12,18 +12,6 @@ use app\models\ContactForm;
 class SiteController extends Controller
 {
     
-    public function actionSaluda($get = "Tutorial Yii") {
-        $mensaje = "Hola Mundo";
-        $numeros = [1,2,3,4,5,6];
-        return $this->render("saluda", 
-        [
-            "saluda" => $mensaje,
-            "numero" => $numeros,
-            "get" => $get,
-                
-                ]);
-    }
-    
     public function behaviors()
     {
         return [
@@ -103,5 +91,15 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    public function actionCaptura(){
+       // $baseUrl = Yii::app()->baseUrl; 
+       // $cs = Yii::app()->getClientScript();
+        //$cs->registerScriptFile($baseUrl.'/js/yourscript.js');
+       // $cs->registerCssFile('https://fonts.googleapis.com/icon?family=Material+Icons');    
+        //
+
+        return $this ->render('captura');
     }
 }

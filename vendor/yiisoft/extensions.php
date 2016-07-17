@@ -75,4 +75,40 @@ return array (
       '@amnah/yii2/user' => $vendorDir . '/amnah/yii2-user',
     ),
   ),
+  'yiisoft/yii2-imagine' => 
+  array (
+    'name' => 'yiisoft/yii2-imagine',
+    'version' => '2.0.3.0',
+    'alias' => 
+    array (
+      '@yii/imagine' => $vendorDir . '/yiisoft/yii2-imagine',
+    ),
+  ),
+  'macgyer/yii2-materializecss' => 
+  array (
+    'name' => 'macgyer/yii2-materializecss',
+    'version' => '1.0.6.0',
+    'alias' => 
+    array (
+      '@macgyer/yii2materializecss' => $vendorDir . '/macgyer/yii2-materializecss/src',
+    ),
+  ),
+  'mervick/yii2-material-design-icons' => 
+  array (
+    'name' => 'mervick/yii2-material-design-icons',
+    'version' => '1.0.0.0',
+    'alias' => 
+    array (
+      '@yii/materialicons' => $vendorDir . '/mervick/yii2-material-design-icons',
+    ),
+  ),
+  'rmrevin/yii2-fontawesome' => 
+  array (
+    'name' => 'rmrevin/yii2-fontawesome',
+    'version' => '2.15.1.0',
+    'alias' => 
+    array (
+      '@rmrevin/yii/fontawesome' => $vendorDir . '/rmrevin/yii2-fontawesome',
+    ),
+  ),
 );
