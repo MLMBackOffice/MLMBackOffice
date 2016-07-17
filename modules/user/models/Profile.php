@@ -27,7 +27,7 @@ class Profile extends ActiveRecord
         return [
             [['full_name'], 'string', 'max' => 255],
             [['timezone'], 'string', 'max' => 255],
-            [['direccion'], 'string', 'max' => 50],
+       //     [['direccion'], 'string', 'max' => 50],
         ];
     }
 
@@ -56,9 +56,9 @@ class Profile extends ActiveRecord
             'user_id' => Yii::t('user', 'User ID'),
             'created_at' => Yii::t('user', 'Created At'),
             'updated_at' => Yii::t('user', 'Updated At'),
-            'full_name' => Yii::t('user', 'Full Name'),
+            'full_name' => Yii::t('user', 'Nombre Completo'),
             'timezone' => Yii::t('user', 'Time zone'),
-            'direccion' => Yii::t('user', 'Direccion de residencia')
+     //       'direccion' => Yii::t('user', 'Direccion de residencia')
         ];
     }
 

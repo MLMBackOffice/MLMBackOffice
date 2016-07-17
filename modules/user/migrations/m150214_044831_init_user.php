@@ -108,7 +108,10 @@ class m150214_044831_init_user extends Migration
 
     public function up() {
         
-        $this->addColumn("profile", "direccion", "string");
+        $this->addColumn("user", "token", "string");
+        $this->addColumn("user", "patrocinador", "integer");
+            $this->addForeignKey('{{%user_patrocinador_id}}', '{{%user}}', 'patrocinador', '{{%user}}', 'id');
+    
         
     }
     public function safeDown()

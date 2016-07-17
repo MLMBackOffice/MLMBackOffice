@@ -8,6 +8,8 @@ use yii\web\Response;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\widgets\ActiveForm;
+use \app\modules\user\models\search\UserSearch;
+use app\modules\user\models\User;
 
 /**
  * Default controller for User module
@@ -205,9 +207,25 @@ class DefaultController extends Controller
         $profile = $this->module->model("Profile");
 
         // load post data
-        $post = Yii::$app->request->post();
+        $post = Yii::$app->request->post();   
+       $patr = Yii::$app->getRequest()->getQueryParam('pat');
+  
+        if($patr){
+            
+          $patrocinador= User::find()->where(["username"=>$patr]);
+     
+          if($patrocinador->one())
+            $user->setAttribute("patrocinador", $patrocinador->one()->getId());
+          else
+          { $user->setAttribute("patrocinador", 1);
+           $patr=null;
+            }
+        
+          }
+      //    return $this->render("register", compact("user", "profile"));
+       // echo '<pre>';print_r($post);        
         if ($user->load($post)) {
-
+//echo 'entroooo';die;
             // ensure profile data gets loaded
             $profile->load($post);
 
@@ -222,6 +240,7 @@ class DefaultController extends Controller
 
                 // perform registration
                 $role = $this->module->model("Role");
+           //     $user->setAttribute("patrocinador", 1);
                 $user->setRegisterAttributes($role::ROLE_USER)->save();
                 $profile->setUser($user->id)->save();
                 $this->afterRegister($user);
@@ -237,7 +256,7 @@ class DefaultController extends Controller
             }
         }
 
-        return $this->render("register", compact("user", "profile"));
+        return $this->render("register", compact("user", "profile","patr"));
     }
 
     /**
@@ -482,5 +501,21 @@ class DefaultController extends Controller
         }
 
         return $this->render('reset', compact("user", "success"));
+    }
+    
+        /**
+     * Finds the Usuarios model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return Usuarios the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModel($id)
+    {
+        if (($model = UserSearch::seach($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
     }
 }

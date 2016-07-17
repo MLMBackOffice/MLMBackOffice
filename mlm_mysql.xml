@@ -83,10 +83,10 @@
         <DT arr="0" ds="SmallInt" en="" id="5" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="email" nu="1">
-        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="1"/>
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="username" nu="1">
-        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="1"/>
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="password" nu="1">
         <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
@@ -135,7 +135,14 @@
         <ClNs>username</ClNs>
         <OptTx>USES BTREE</OptTx>
       </Idx>
-      <UniqueConstraints/>
+      <UniqueConstraints>
+        <UnCon nm="uc_email">
+          <ClNs>email</ClNs>
+        </UnCon>
+        <UnCon nm="uc_username">
+          <ClNs>username</ClNs>
+        </UnCon>
+      </UniqueConstraints>
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="user_auth">
@@ -191,7 +198,7 @@
         <DT arr="0" ds="SmallInt" en="" id="5" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="token" nu="0">
-        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="1"/>
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="data" nu="1">
         <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
@@ -215,7 +222,11 @@
         <ClNs>user_id</ClNs>
         <OptTx>USES BTREE</OptTx>
       </Idx>
-      <UniqueConstraints/>
+      <UniqueConstraints>
+        <UnCon nm="uc_token">
+          <ClNs>token</ClNs>
+        </UnCon>
+      </UniqueConstraints>
       <SchTrHis/>
     </Tbl>
     <CustomTypes/>
@@ -247,7 +258,7 @@
     <TbGl bkCl="ff6666ff" sch="schemaA" tbl="role" x="105" y="183"/>
     <TbGl bkCl="ff6666ff" sch="schemaA" tbl="user" x="449" y="50"/>
     <TbGl bkCl="ff6666ff" sch="schemaA" tbl="user_auth" x="50" y="50"/>
-    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="user_token" x="816" y="168"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="user_token" x="776" y="265"/>
     <FkGl bkCl="ff000000" childEdge="WEST" nm="schemaA.profile.profile_user_id" parentEdge="EAST" positioner="OneLineUserLinkPositioner">
       <positionableLines>
         <positionableLine lineRole="SINGLE_LINE" x1="697" x2="837" y1="102" y2="102"/>
@@ -263,9 +274,10 @@
         <positionableLine lineRole="SINGLE_LINE" x1="449" x2="319" y1="109" y2="109"/>
       </positionableLines>
     </FkGl>
-    <FkGl bkCl="ff000000" childEdge="WEST" nm="schemaA.user_token.user_token_user_id" parentEdge="EAST" positioner="OneLineUserLinkPositioner">
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="schemaA.user_token.user_token_user_id" parentEdge="EAST" positioner="TwoLineUserLinkPositioner">
       <positionableLines>
-        <positionableLine lineRole="SINGLE_LINE" x1="697" x2="816" y1="221" y2="221"/>
+        <positionableLine lineRole="PARENT_LINE" x1="697" x2="777" y1="258" y2="258"/>
+        <positionableLine lineRole="CHILD_LINE" x1="781" x2="781" y1="265" y2="262"/>
       </positionableLines>
     </FkGl>
     <Notes/>
@@ -288,7 +300,7 @@
     </BasicOptionMgr>
   </DbDocOptionMgr>
   <OpenEditors>
-    <OpenEditor ClsNm="Diagram" fqn="null.diagramA" selected="0"/>
+    <OpenEditor ClsNm="Diagram" fqn="null.diagramA" selected="1"/>
   </OpenEditors>
   <TreePaths>
     <TreePath/>

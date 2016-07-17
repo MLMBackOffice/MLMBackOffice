@@ -42,12 +42,22 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php if ($module->requireEmail): ?>
             <?= $form->field($user, 'email') ?>
         <?php endif; ?>
-
+        
+        <?php if ($patr): ?>
+            <?=  $form->field($user, 'patrocinador')->textInput(array('value'=>$patr, 'readonly'=>true)) ?>
+        <?php endif; ?>
+        <?php if (empty($patr)): ?>
+            <?=  $form->field($user, 'patrocinador') ?>
+        <?php endif; ?>
+     
         <?php if ($module->requireUsername): ?>
             <?= $form->field($user, 'username') ?>
         <?php endif; ?>
         <?php //echo "<pre>".$profile;//if ($module->requireUsername): ?>
-            <?= $form->field($profile, 'direccion') ?>
+            <?= $form->field($profile, 'full_name') ?>
+        <?php// endif; ?>
+        <?php //echo "<pre>".$profile;//if ($module->requireUsername): ?>
+            <?= $form->field($user, 'token') ?>
         <?php// endif; ?>
 
         <?= $form->field($user, 'newPassword')->passwordInput() ?>
