@@ -20,7 +20,8 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'class' => 'amnah\yii2\user\components\User',
+         //   'class' => 'amnah\yii2\user\components\User',
+            'class' => 'app\modules\user\components\User',
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
@@ -54,7 +55,7 @@ $config = [
     ],
     'modules' => [
         'user' => [
-            'class' => 'amnah\yii2\user\Module',
+            'class' => 'app\modules\user\Module',
         // set custom module properties here ...
         ],
         'errorHandler' => [

@@ -10,6 +10,11 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'app\commands',
+    'modules' => [
+    'user' => [
+         'class' => 'app\modules\user\Module',
+    ],
+],
     'components' => [
         'cache' => [
             'class' => 'yii\caching\FileCache',

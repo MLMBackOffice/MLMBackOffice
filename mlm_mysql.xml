@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?><Db flnm="mlm_mysql" nm="mlm" ver="1.3.4">
+  <VerLbl/>
+  <VerNotes/>
+  <DefTblOpts/>
+  <DocFolder>C:\xampp\htdocs\MLMBackOffice</DocFolder>
+  <Sch Cm="" nm="schemaA">
+    <Tbl UsSo="1" nm="migration">
+      <TblOpts>ENGINE=InnoDB DEFAULT CHARSET=latin1</TblOpts>
+      <Pk ClNs="version" nm="pkmigration"/>
+      <Cl au="0" df="" nm="version" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="180" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="apply_time" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="profile">
+      <TblOpts>ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci</TblOpts>
+      <Pk ClNs="id" nm="pkprofile"/>
+      <Cl au="1" df="" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="updated_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="full_name" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="timezone" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="profile_user_id" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="user" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="profile" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="user_id" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="profile_user_id" spa="0" unq="0">
+        <ClNs>user_id</ClNs>
+        <OptTx>USES BTREE</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="role">
+      <TblOpts>ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci</TblOpts>
+      <Pk ClNs="id" nm="pkrole"/>
+      <Cl au="1" df="" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="updated_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="can_admin" nu="0">
+        <DT arr="0" ds="SmallInt" en="" id="5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="user">
+      <TblOpts>ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci</TblOpts>
+      <Pk ClNs="id" nm="pkuser"/>
+      <Cl au="1" df="" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="role_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="status" nu="0">
+        <DT arr="0" ds="SmallInt" en="" id="5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="email" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="username" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="password" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="auth_key" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="access_token" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="logged_in_ip" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="logged_in_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_ip" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="updated_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="banned_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="banned_reason" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="user_role_id" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="role" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="user" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="role_id" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="user_email" spa="0" unq="1">
+        <ClNs>email</ClNs>
+        <OptTx>USES BTREE</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="user_role_id" spa="0" unq="0">
+        <ClNs>role_id</ClNs>
+        <OptTx>USES BTREE</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="user_username" spa="0" unq="1">
+        <ClNs>username</ClNs>
+        <OptTx>USES BTREE</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="user_auth">
+      <TblOpts>ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci</TblOpts>
+      <Pk ClNs="id" nm="pkuser_auth"/>
+      <Cl au="1" df="" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="provider" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="provider_id" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="provider_attributes" nu="0">
+        <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="updated_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="user_auth_user_id" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="user" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="user_auth" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="user_id" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="user_auth_provider_id" spa="0" unq="0">
+        <ClNs>provider_id</ClNs>
+        <OptTx>USES BTREE</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="user_auth_user_id" spa="0" unq="0">
+        <ClNs>user_id</ClNs>
+        <OptTx>USES BTREE</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="user_token">
+      <TblOpts>ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci</TblOpts>
+      <Pk ClNs="id" nm="pkuser_token"/>
+      <Cl au="1" df="" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_id" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="type" nu="0">
+        <DT arr="0" ds="SmallInt" en="" id="5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="token" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="data" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="expired_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="user_token_user_id" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="user" oe="1" sch="schemaA" zr="1"/>
+        <CdTb mn="1" nm="user_token" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="user_id" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="user_token_token" spa="0" unq="1">
+        <ClNs>token</ClNs>
+        <OptTx>USES BTREE</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="user_token_user_id" spa="0" unq="0">
+        <ClNs>user_id</ClNs>
+        <OptTx>USES BTREE</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <CustomTypes/>
+  </Sch>
+  <Dgm nm="diagramA">
+    <RnCf ClkAct="true" FtSz="11" lkStgy="RightAngleStrategy" zm="1.0">
+      <VbCfg>
+        <Fg ky="Auto Number" vl="0"/>
+        <Fg ky="Check" vl="0"/>
+        <Fg ky="Comment" vl="0"/>
+        <Fg ky="Data Type" vl="1"/>
+        <Fg ky="Default" vl="0"/>
+        <Fg ky="ENUM Values" vl="0"/>
+        <Fg ky="Length" vl="1"/>
+        <Fg ky="Name" vl="1"/>
+        <Fg ky="Nullable" vl="0"/>
+        <Fg ky="Schema Name" vl="0"/>
+        <Fg ky="Signed" vl="0"/>
+      </VbCfg>
+    </RnCf>
+    <DiaProps>
+      <Show AllCols="1" FkCols="1" FkNms="1" PkCols="1"/>
+      <ErNotation>BarkerErNotation</ErNotation>
+      <DbTableRectangleFill>HeaderFooterFill</DbTableRectangleFill>
+      <svg path=""/>
+    </DiaProps>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="migration" x="1151" y="50"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="profile" x="837" y="50"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="role" x="105" y="183"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="user" x="449" y="50"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="user_auth" x="50" y="50"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="user_token" x="816" y="168"/>
+    <FkGl bkCl="ff000000" childEdge="WEST" nm="schemaA.profile.profile_user_id" parentEdge="EAST" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="697" x2="837" y1="102" y2="102"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="WEST" nm="schemaA.user.user_role_id" parentEdge="EAST" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="329" x2="449" y1="227" y2="227"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="EAST" nm="schemaA.user_auth.user_auth_user_id" parentEdge="WEST" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="449" x2="319" y1="109" y2="109"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="WEST" nm="schemaA.user_token.user_token_user_id" parentEdge="EAST" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="697" x2="816" y1="221" y2="221"/>
+      </positionableLines>
+    </FkGl>
+    <Notes/>
+    <Zones/>
+  </Dgm>
+  <RnmMgr NxRnmId="1"/>
+  <DbDocOptionMgr>
+    <BasicOptionMgr>
+      <Name>db.doc.option.mgr</Name>
+      <BoolOpt lbl="Diagrams" nm="doc.diagrams" on="1" spl="0"/>
+      <BoolOpt lbl="Foreign Keys" nm="doc.fks" on="1" spl="0"/>
+      <BoolOpt lbl="Indexes" nm="doc.indexes" on="1" spl="0"/>
+      <BoolOpt lbl="Overwrite CSS File" nm="doc.overwrite.css" on="1" spl="0"/>
+      <BoolOpt lbl="Procedures" nm="doc.procs" on="1" spl="0"/>
+      <BoolOpt lbl="Schemas" nm="doc.schemas" on="1" spl="0"/>
+      <BoolOpt lbl="Sequences" nm="doc.sequences" on="1" spl="0"/>
+      <BoolOpt lbl="Tables" nm="doc.tables" on="1" spl="0"/>
+      <BoolOpt lbl="Triggers" nm="doc.triggers" on="1" spl="0"/>
+      <BoolOpt lbl="Views" nm="doc.views" on="1" spl="0"/>
+    </BasicOptionMgr>
+  </DbDocOptionMgr>
+  <OpenEditors>
+    <OpenEditor ClsNm="Diagram" fqn="null.diagramA" selected="0"/>
+  </OpenEditors>
+  <TreePaths>
+    <TreePath/>
+  </TreePaths>
+  <SqlTexts/>
+</Db>
