@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5375243acdc6d7091d95f7601bea3aa2",
-    "content-hash": "87598680241f9915083a93052a0147ed",
+    "hash": "467c02e8e7addb3ad764b02dd88d20a3",
+    "content-hash": "d643d728b5c8dd4c48f7286b9f3e9220",
     "packages": [
         {
             "name": "amnah/yii2-user",
@@ -53,20 +53,20 @@
         },
         {
             "name": "bower-asset/bootstrap",
-            "version": "v3.3.5",
+            "version": "v3.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "16b48259a62f576e52c903c476bd42b90ab22482"
+                "reference": "81df608a40bf0629a1dc08e584849bb1e43e0b7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/16b48259a62f576e52c903c476bd42b90ab22482",
-                "reference": "16b48259a62f576e52c903c476bd42b90ab22482",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/81df608a40bf0629a1dc08e584849bb1e43e0b7a",
+                "reference": "81df608a40bf0629a1dc08e584849bb1e43e0b7a",
                 "shasum": ""
             },
             "require": {
-                "bower-asset/jquery": ">=1.9.1"
+                "bower-asset/jquery": ">=1.9.1,<3.0"
             },
             "type": "bower-asset-library",
             "extra": {
@@ -175,6 +175,80 @@
                 "jquery",
                 "mask",
                 "plugins"
+            ]
+        },
+        {
+            "name": "bower-asset/materialize",
+            "version": "v0.97.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dogfalo/materialize.git",
+                "reference": "793e5716040cb133041b55be75b1fae51debb9f3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dogfalo/materialize/zipball/793e5716040cb133041b55be75b1fae51debb9f3",
+                "reference": "793e5716040cb133041b55be75b1fae51debb9f3",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery": ">=2.1.1"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "bin/materialize.css",
+                    "bin/materialize.js",
+                    "fonts/roboto/Roboto-Bold.ttf",
+                    "fonts/roboto/Roboto-Bold.woff",
+                    "fonts/roboto/Roboto-Bold.woff2",
+                    "fonts/roboto/Roboto-Light.ttf",
+                    "fonts/roboto/Roboto-Light.woff",
+                    "fonts/roboto/Roboto-Light.woff2",
+                    "fonts/roboto/Roboto-Medium.ttf",
+                    "fonts/roboto/Roboto-Medium.woff",
+                    "fonts/roboto/Roboto-Medium.woff2",
+                    "fonts/roboto/Roboto-Regular.ttf",
+                    "fonts/roboto/Roboto-Regular.woff",
+                    "fonts/roboto/Roboto-Regular.woff2",
+                    "fonts/roboto/Roboto-Thin.ttf",
+                    "fonts/roboto/Roboto-Thin.woff",
+                    "fonts/roboto/Roboto-Thin.woff2"
+                ],
+                "bower-asset-ignore": [
+                    "jade/",
+                    ".gitignore",
+                    "CNAME",
+                    "css/",
+                    "bower.json",
+                    "README.md",
+                    "images/",
+                    "js/jquery.timeago.js",
+                    "js/init.js",
+                    "js/prism.js",
+                    "res/",
+                    "sass/style.scss",
+                    "sass/ghpages-materialize.scss",
+                    "**/*.html",
+                    "**/*.zip",
+                    "**/*.txt",
+                    "sitemap.xml",
+                    "package.json",
+                    "Gruntfile.js"
+                ]
+            },
+            "description": "A modern responsive front-end framework based on Material Design",
+            "keywords": [
+                "css",
+                "design",
+                "framework",
+                "front-end",
+                "js",
+                "material",
+                "mobile-first",
+                "responsive",
+                "sass",
+                "ux"
             ]
         },
         {
@@ -342,6 +416,193 @@
                 "html"
             ],
             "time": "2015-08-05 01:03:42"
+        },
+        {
+            "name": "macgyer/yii2-materializecss",
+            "version": "1.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MacGyer/yii2-materializecss.git",
+                "reference": "793fc726a02878a58c958bd110626de31c16b42d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MacGyer/yii2-materializecss/zipball/793fc726a02878a58c958bd110626de31c16b42d",
+                "reference": "793fc726a02878a58c958bd110626de31c16b42d",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/materialize": "0.97.*",
+                "php": ">=5.4.0",
+                "yiisoft/yii2": "~2.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "macgyer\\yii2materializecss\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Christoph Erdmann",
+                    "homepage": "http://www.medienpol.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Materialize CSS implementation for Yii2",
+            "keywords": [
+                "material design",
+                "materialize",
+                "widgets",
+                "yii2"
+            ],
+            "time": "2016-05-16 12:23:28"
+        },
+        {
+            "name": "mervick/material-design-icons",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mervick/material-design-icons.git",
+                "reference": "12b5064d3f791a95172087328ed0c49daac0b8f7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mervick/material-design-icons/zipball/12b5064d3f791a95172087328ed0c49daac0b8f7",
+                "reference": "12b5064d3f791a95172087328ed0c49daac0b8f7",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT",
+                "CC-BY-4.0"
+            ],
+            "authors": [
+                {
+                    "name": "Andrey Izman",
+                    "email": "izmanw@gmail.com"
+                }
+            ],
+            "description": "Google Material Design Icons For Using With Bootstrap",
+            "homepage": "http://github.com/mervick/material-design-icons",
+            "keywords": [
+                "bootstrap",
+                "google",
+                "icons",
+                "icons-web-font",
+                "material",
+                "material-design",
+                "web-font"
+            ],
+            "time": "2015-12-06 07:05:24"
+        },
+        {
+            "name": "mervick/yii2-material-design-icons",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mervick/yii2-material-design-icons.git",
+                "reference": "b3666248fc89d098372b369796da05495455706a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mervick/yii2-material-design-icons/zipball/b3666248fc89d098372b369796da05495455706a",
+                "reference": "b3666248fc89d098372b369796da05495455706a",
+                "shasum": ""
+            },
+            "require": {
+                "mervick/material-design-icons": "~1.0",
+                "php": ">=5.4.0",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "yii\\materialicons\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrey Izman",
+                    "email": "izmanw@gmail.com"
+                }
+            ],
+            "description": "Asset Bundle For Yii2 Framework With Google Material Design Icons",
+            "homepage": "http://github.com/mervick/yii2-material-design-icons",
+            "keywords": [
+                "asset",
+                "asset-bundle",
+                "bootstrap",
+                "bundle",
+                "google",
+                "icons",
+                "icons-web-font",
+                "material",
+                "material-design",
+                "web-font",
+                "yii2"
+            ],
+            "time": "2015-07-04 10:07:41"
+        },
+        {
+            "name": "rmrevin/yii2-fontawesome",
+            "version": "2.15.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rmrevin/yii2-fontawesome.git",
+                "reference": "d2777130bc926bc670a4e50c2f504a0fb782efb1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rmrevin/yii2-fontawesome/zipball/d2777130bc926bc670a4e50c2f504a0fb782efb1",
+                "reference": "d2777130bc926bc670a4e50c2f504a0fb782efb1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "yiisoft/yii2": "2.0.*"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "asset-installer-paths": {
+                    "npm-asset-library": "vendor/npm",
+                    "bower-asset-library": "vendor/bower"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "rmrevin\\yii\\fontawesome\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Revin Roman",
+                    "email": "roman@rmrevin.com",
+                    "homepage": "https://rmrevin.com/"
+                }
+            ],
+            "description": "Asset Bundle for Yii2 with Font Awesome",
+            "keywords": [
+                "asset",
+                "awesome",
+                "bundle",
+                "font",
+                "yii"
+            ],
+            "time": "2016-05-28 21:18:32"
         },
         {
             "name": "swiftmailer/swiftmailer",

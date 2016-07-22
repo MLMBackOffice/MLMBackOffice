@@ -1,8 +1,10 @@
 <?php
 /**
  * Application configuration shared by all test types
- */
+ 'language' => 'en-US',
+ *  */
 return [
+   
     'language' => 'en-US',
     'controllerMap' => [
         'fixture' => [

@@ -1,5 +1,4 @@
 <?php
-
 /* @var $this \yii\web\View */
 /* @var $content string */
 
@@ -14,61 +13,66 @@ AppAsset::register($this);
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
-<head>
-    <meta charset="<?= Yii::$app->charset ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
-    <?php $this->head() ?>
-</head>
-<body>
-<?php $this->beginBody() ?>
+    <head>
+        <meta charset="<?= Yii::$app->charset ?>">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <?= Html::csrfMetaTags() ?>
+        <title><?= Html::encode($this->title) ?></title>
+        <?php $this->head() ?>
+    </head>
+    <body>
+        <?php $this->beginBody() ?>
 
-<div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => 'My Company',
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            ['label' => 'Cuenta', 'url' => ['/user/account']],
-            ['label' => 'Perfil', 'url' => ['/user/profile']],
-               ['label' => 'User', 'url' => ['/user']],
-    Yii::$app->user->isGuest ?
-        ['label' => 'Login', 'url' => ['/user/login']] : // or ['/user/login-email']
-        ['label' => 'Logout (' . Yii::$app->user->displayName . ')',
-            'url' => ['/user/logout'],
-            'linkOptions' => ['data-method' => 'post']],
-],
-    ]);
-    NavBar::end();
-    ?>
+        <div class="wrap">
+            <?php
+            NavBar::begin(['options' => ['class' => 'navbar-inverse navbar-fixed-top']]
+            /* [
+              'brandLabel' => 'WeiFastPay',
+              //   'brandUrl' => Yii::$app->homeUrl,
+              'options' => [
+              'class' => 'navbar-inverse navbar-fixed-top',
+              ],
+              ] */);
+            if (empty(Yii::$app->user->isGuest)) {
+                echo Nav::widget([
+                'options' => ['class' => 'navbar-nav navbar-right'],
+                'items' => [
+                ['label' => Yii::t('app', 'Home'), 'url' => ['/site/index']],
+                ['label' => Yii::t('app', 'Status'), 'url' => ['/status/index']],
+                ['label' => Yii::t('app', 'About'), 'url' => ['/site/about']],
+                ['label' => 'Cuenta', 'url' => ['/user/account']],
+                ['label' => 'Perfil', 'url' => ['/user/profile']],
+                ['label' => 'User', 'url' => ['/user']],
+                Yii::$app->user->isGuest ?
+                ['label' => 'Login', 'url' => ['/user/login']] : // or ['/user/login-email']
+                ['label' => 'Logout (' . Yii::$app->user->displayName . ')',
+                'url' => ['/user/logout'],
+                'linkOptions' => ['data-method' => 'post']],
+                ],
+                ]);
+            }
+            NavBar::end();
+            ?>
 
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= $content ?>
-    </div>
-</div>
+            <div class="container">
+            <?=
+            Breadcrumbs::widget([
+                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+            ])
+            ?>
+                <?= $content ?>
+            </div>
+        </div>
 
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <footer class="footer">
+            <div class="container">
+                <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
-    </div>
-</footer>
+                <p class="pull-right"><?= Yii::powered() ?></p>
+            </div>
+        </footer>
 
 <?php $this->endBody() ?>
-</body>
+    </body>
 </html>
-<?php $this->endPage() ?>
+        <?php $this->endPage() ?>

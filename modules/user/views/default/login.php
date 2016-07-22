@@ -13,7 +13,7 @@ $this->title = Yii::t('user', 'Login');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-default-login">
-
+    <?php echo Html::img('@web/images/logo.png') ?>
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?php $form = ActiveForm::begin([

@@ -4,6 +4,7 @@ $params = require(__DIR__ . '/params.php');
 
 $config = [
     'id' => 'basic',
+     'language'=>'es', // spanish
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log',
         function () {
@@ -51,6 +52,14 @@ $config = [
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
     //            '<controller:\w+>/<action:\w+>/<patrocinador:\w+>' => '<controller>/<action>/<patrocinador>',
             ),
+        ],
+         'i18n' => [
+            'translations' => [
+                'user' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                //    'basePath' => '@app/messages/es/user.php', // example: @app/messages/fr/user.php
+                ]
+            ],
         ],
         'db' => require(__DIR__ . '/db.php')
     ],

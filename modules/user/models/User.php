@@ -98,6 +98,7 @@ class User extends ActiveRecord implements IdentityInterface {
             [['email', 'username'], 'string', 'max' => 255],
             [['email', 'username', 'token'], 'unique'],
             [['patrocinador'], 'validatePatrocinador'],
+            [['patrocinador'], 'required'],
             //    [ 'username','token'], 'unique'],
             [['email', 'username'], 'filter', 'filter' => 'trim'],
             [['email'], 'email'],
@@ -483,7 +484,7 @@ class User extends ActiveRecord implements IdentityInterface {
         $mailer = Yii::$app->mailer;
         $oldViewPath = $mailer->viewPath;
         $mailer->viewPath = $this->module->emailViewPath;
-
+       //$mailer->com
         // send email
         $user = $this;
         $profile = $user->profile;

@@ -14,8 +14,8 @@ use app\modules\user\models\User;
 /**
  * Default controller for User module
  */
-class DefaultController extends Controller
-{
+class DefaultController extends Controller {
+
     /**
      * @var \app\modules\user\Module
      * @inheritdoc
@@ -25,8 +25,7 @@ class DefaultController extends Controller
     /**
      * @inheritdoc
      */
-    public function behaviors()
-    {
+    public function behaviors() {
         return [
             'access' => [
                 'class' => AccessControl::className(),
@@ -60,8 +59,7 @@ class DefaultController extends Controller
     /**
      * Display index - debug page, login page, or account page
      */
-    public function actionIndex()
-    {
+    public function actionIndex() {
         if (defined('YII_DEBUG') && YII_DEBUG) {
             $actions = $this->module->getActions();
             return $this->render('index', ["actions" => $actions]);
@@ -75,8 +73,7 @@ class DefaultController extends Controller
     /**
      * Display login page
      */
-    public function actionLogin()
-    {
+    public function actionLogin() {
         /** @var \app\modules\user\models\forms\LoginForm $model */
         $model = $this->module->model("LoginForm");
 
@@ -93,8 +90,7 @@ class DefaultController extends Controller
     /**
      * Login/register via email
      */
-    public function actionLoginEmail()
-    {
+    public function actionLoginEmail() {
         /** @var \app\modules\user\models\forms\LoginEmailForm $loginEmailForm */
         $loginEmailForm = $this->module->model("LoginEmailForm");
 
@@ -113,13 +109,11 @@ class DefaultController extends Controller
     /**
      * Login/register callback via email
      */
-    public function actionLoginCallback($token)
-    {
+    public function actionLoginCallback($token) {
         /** @var \app\modules\user\models\User $user */
         /** @var \app\modules\user\models\Profile $profile */
         /** @var \app\modules\user\models\Role $role */
         /** @var \app\modules\user\models\UserToken $userToken */
-
         $user = $this->module->model("User");
         $profile = $this->module->model("Profile");
         $userToken = $this->module->model("UserToken");
@@ -161,8 +155,7 @@ class DefaultController extends Controller
     /**
      * Perform the login
      */
-    protected function performLogin($user, $rememberMe = true)
-    {
+    protected function performLogin($user, $rememberMe = true) {
         // log user in
         $loginDuration = $rememberMe ? $this->module->loginDuration : 0;
         Yii::$app->user->login($user, $loginDuration);
@@ -181,8 +174,7 @@ class DefaultController extends Controller
     /**
      * Log user out and redirect
      */
-    public function actionLogout()
-    {
+    public function actionLogout() {
         Yii::$app->user->logout();
 
         // handle redirect
@@ -196,38 +188,36 @@ class DefaultController extends Controller
     /**
      * Display registration page
      */
-    public function actionRegister()
-    {
+    public function actionRegister() {
         /** @var \app\modules\user\models\User $user */
         /** @var \app\modules\user\models\Profile $profile */
         /** @var \app\modules\user\models\Role $role */
-
         // set up new user/profile objects
         $user = $this->module->model("User", ["scenario" => "register"]);
         $profile = $this->module->model("Profile");
 
         // load post data
-        $post = Yii::$app->request->post();   
-       $patr = Yii::$app->getRequest()->getQueryParam('pat');
-  
-        if($patr){
-            
-          $patrocinador= User::find()->where(["username"=>$patr]);
-     
-          if($patrocinador->one())
-            $user->setAttribute("patrocinador", $patrocinador->one()->getId());
-          else
-          { $user->setAttribute("patrocinador", 1);
-           $patr=null;
+        $post = Yii::$app->request->post();
+        $patr = Yii::$app->getRequest()->getQueryParam('pat');
+  //var_dump(Yii::$app->request->post());
+        if ($patr) {
+
+            $patrocinador = User::find()->where(["username" => $patr]);
+
+            if ($patrocinador->one())
+                $user->setAttribute("patrocinador", $patrocinador->one()->getId());
+            else {
+                $user->setAttribute("patrocinador", 1);
+                $patr = null;
             }
-        
-          }
-      //    return $this->render("register", compact("user", "profile"));
-       // echo '<pre>';print_r($post);        
+        }
+        //    return $this->render("register", compact("user", "profile"));
+        // echo '<pre>';print_r($post);        
         if ($user->load($post)) {
 //echo 'entroooo';die;
             // ensure profile data gets loaded
             $profile->load($post);
+
 
             // validate for ajax request
             if (Yii::$app->request->isAjax) {
@@ -238,9 +228,17 @@ class DefaultController extends Controller
             // validate for normal request
             if ($user->validate() && $profile->validate()) {
 
+//user-patrocinador
+                if (empty($patr)) {
+           /*       var_dump(Yii::$app->request->post());
+                  var_dump($post['User']['patrocinador']);
+                  die;*/
+                    $patrocinador = User::find()->where(["username" => $post['User']['patrocinador']]);
+                    $user->setAttribute("patrocinador", $patrocinador->one()->getId());
+                }
                 // perform registration
                 $role = $this->module->model("Role");
-           //     $user->setAttribute("patrocinador", 1);
+                //     $user->setAttribute("patrocinador", 1);
                 $user->setRegisterAttributes($role::ROLE_USER)->save();
                 $profile->setUser($user->id)->save();
                 $this->afterRegister($user);
@@ -256,15 +254,14 @@ class DefaultController extends Controller
             }
         }
 
-        return $this->render("register", compact("user", "profile","patr"));
+        return $this->render("register", compact("user", "profile", "patr"));
     }
 
     /**
      * Process data after registration
      * @param \app\modules\user\models\User $user
      */
-    protected function afterRegister($user)
-    {
+    protected function afterRegister($user) {
         /** @var \app\modules\user\models\UserToken $userToken */
         $userToken = $this->module->model("UserToken");
 
@@ -282,21 +279,19 @@ class DefaultController extends Controller
             if (!$numSent = $user->sendEmailConfirmation($userToken)) {
 
                 // handle email error
-                //Yii::$app->session->setFlash("Email-error", "Failed to send email");
+                Yii::$app->session->setFlash("Email-error", "Failed to send email");
             }
-        } else {
-            Yii::$app->user->login($user, $this->module->loginDuration);
-        }
+        }/* else {
+          Yii::$app->user->login($user, $this->module->loginDuration);
+          } */
     }
 
     /**
      * Confirm email
      */
-    public function actionConfirm($token)
-    {
+    public function actionConfirm($token) {
         /** @var \app\modules\user\models\UserToken $userToken */
         /** @var \app\modules\user\models\User $user */
-
         // search for userToken
         $success = false;
         $email = "";
@@ -314,7 +309,7 @@ class DefaultController extends Controller
             }
 
             // set email and delete token
-            $email = $newEmail ?: $user->email;
+            $email = $newEmail ? : $user->email;
             $userToken->delete();
         }
 
@@ -324,11 +319,9 @@ class DefaultController extends Controller
     /**
      * Account
      */
-    public function actionAccount()
-    {
+    public function actionAccount() {
         /** @var \app\modules\user\models\User $user */
         /** @var \app\modules\user\models\UserToken $userToken */
-
         // set up user and load post data
         $user = Yii::$app->user->identity;
         $user->setScenario("account");
@@ -369,10 +362,8 @@ class DefaultController extends Controller
     /**
      * Profile
      */
-    public function actionProfile()
-    {
+    public function actionProfile() {
         /** @var \app\modules\user\models\Profile $profile */
-
         // set up profile and load post data
         $profile = Yii::$app->user->identity->profile;
         $loadedPost = $profile->load(Yii::$app->request->post());
@@ -396,10 +387,8 @@ class DefaultController extends Controller
     /**
      * Resend email confirmation
      */
-    public function actionResend()
-    {
+    public function actionResend() {
         /** @var \app\modules\user\models\forms\ResendForm $model */
-
         // load post data and send email
         $model = $this->module->model("ResendForm");
         if ($model->load(Yii::$app->request->post()) && $model->sendEmail()) {
@@ -414,11 +403,9 @@ class DefaultController extends Controller
     /**
      * Resend email change confirmation
      */
-    public function actionResendChange()
-    {
+    public function actionResendChange() {
         /** @var \app\modules\user\models\User $user */
         /** @var \app\modules\user\models\UserToken $userToken */
-
         // find userToken of type email change
         $user = Yii::$app->user->identity;
         $userToken = $this->module->model("UserToken");
@@ -436,11 +423,9 @@ class DefaultController extends Controller
     /**
      * Cancel email change
      */
-    public function actionCancel()
-    {
+    public function actionCancel() {
         /** @var \app\modules\user\models\User $user */
         /** @var \app\modules\user\models\UserToken $userToken */
-
         // find userToken of type email change
         $user = Yii::$app->user->identity;
         $userToken = $this->module->model("UserToken");
@@ -456,10 +441,8 @@ class DefaultController extends Controller
     /**
      * Forgot password
      */
-    public function actionForgot()
-    {
+    public function actionForgot() {
         /** @var \app\modules\user\models\forms\ForgotForm $model */
-
         // load post data and send email
         $model = $this->module->model("ForgotForm");
         if ($model->load(Yii::$app->request->post()) && $model->sendForgotEmail()) {
@@ -474,11 +457,9 @@ class DefaultController extends Controller
     /**
      * Reset password
      */
-    public function actionReset($token)
-    {
+    public function actionReset($token) {
         /** @var \app\modules\user\models\User $user */
         /** @var \app\modules\user\models\UserToken $userToken */
-
         // get user token and check expiration
         $userToken = $this->module->model("UserToken");
         $userToken = $userToken::findByToken($token, $userToken::TYPE_PASSWORD_RESET);
@@ -502,20 +483,20 @@ class DefaultController extends Controller
 
         return $this->render('reset', compact("user", "success"));
     }
-    
-        /**
+
+    /**
      * Finds the Usuarios model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
      * @return Usuarios the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
-    {
+    protected function findModel($id) {
         if (($model = UserSearch::seach($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
 }
